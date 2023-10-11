@@ -51,6 +51,23 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        "uncx-black": "#0F0F0F",
+        "uncx-white": "#F4F4F4",
+
+        // Core brand green used for all highlighting
+        "uncx-green": "#00DF6C",
+
+        // Gradient colors
+        "uncx-grad-green-a": "#00C68D", // Can also be used a secondary green
+        "uncx-grad-green-b": "#00F847", // Don't use this colour by itself
+        "uncx-grad-alt-a": "#0099ff", // This alt gradient colors should be used infrequently and only in very crowded ui
+        "uncx-grad-alt-b": "#6600ff",
+
+        // UI layout
+        "uncx-common-bg": "#0A0A0A", // BG for footer/header etc/any common ui element. Also for containers that have multiple components inside.
+        "uncx-core-bg": "#282828", // Main page BG and also used for buttons
+        "uncx-comp-bg": "#171717", // The BG of the primary/largest component container
+        "uncx-hilite-bg": "#242424", // The BG for any highlighted areas within a component
       },
       borderRadius: {
         lg: "var(--radius)",
