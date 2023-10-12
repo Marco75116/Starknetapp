@@ -1,0 +1,68 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+
+import Link from "next/link";
+import { cn } from "@/lib/utils";
+import { HelpCircle } from "lucide-react";
+import { dashboardConfig } from "@/lib/configs/global.config";
+import Image from "next/image";
+import UncxLogo from "@/assets/logos/uncx/uncx-logo.svg";
+
+type SidebarNavProps = {
+  className: string;
+};
+
+const SidebarNav = ({ className, ...props }: SidebarNavProps) => {
+  const pathname = usePathname();
+  const items = dashboardConfig;
+
+  if (!items?.length) return null;
+
+  return (
+    <div className={cn("flex w-full flex-col gap-2", className)} {...props}>
+      <Image
+        src={UncxLogo}
+        alt="UNCX Logo"
+        className="flex self-center pt-5 pb-8 grayscale-1"
+        width={180}
+        height={180}
+      />
+      {items.map((item, index) => {
+        const Icon = item.icon || HelpCircle;
+
+        return item.href ? (
+          <Link
+            aria-label={item.title}
+            key={index}
+            href={item.href}
+            target={item.external ? "_blank" : ""}
+            rel={item.external ? "noreferrer" : ""}
+          >
+            <span
+              className={cn(
+                "group flex w-full items-center rounded-md border border-transparent px-2 py-1 hover:bg-muted hover:text-foreground",
+                pathname === item.href
+                  ? "bg-muted font-medium text-foreground"
+                  : "text-muted-foreground",
+                item.disabled && "pointer-events-none opacity-60"
+              )}
+            >
+              <Icon className="w-4 h-4 mr-2" aria-hidden="true" />
+              <span>{item.title}</span>
+            </span>
+          </Link>
+        ) : (
+          <span
+            key={index}
+            className="flex items-center w-full p-2 rounded-md cursor-not-allowed text-muted-foreground hover:underline"
+          >
+            {item.title}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+export default SidebarNav;
