@@ -9,3 +9,12 @@ export type NavItem = {
   label?: string;
   description?: string;
 };
+
+export type SubscriptionPlan = {
+  id: "starter" | "basic" | "advanced" | "enterprise";
+  name: string;
+  description: string;
+  features: string[];
+  stripePriceId: number;
+  price: number;
+};

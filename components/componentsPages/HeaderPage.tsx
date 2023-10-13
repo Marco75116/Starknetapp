@@ -6,7 +6,7 @@ type HeaderPageProps = {
 };
 const HeaderPage = ({ title, desc }: HeaderPageProps) => {
   return (
-    <div>
+    <div className="mb-8">
       <h3 className="text-3xl font-medium">{title}</h3>
       <p className="text-lg text-muted-foreground">{desc}</p>
     </div>
