@@ -23,7 +23,7 @@ const SidebarNav = ({ className, ...props }: SidebarNavProps) => {
   if (!items?.length) return null;
 
   return (
-    <div className="py-2 pr-6 lg:py-2">
+    <div className="py-2 pl-4 pr-4 md:pl-6 lg:py-2">
       <div className={cn("flex w-full flex-col gap-2", className)} {...props}>
         <Image
           src={UncxLogo}

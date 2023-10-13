@@ -33,7 +33,7 @@ export const MobileSidebar = () => {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="p-0">
-        <SidebarNav className="pl-4 " />
+        <SidebarNav className="" />
       </SheetContent>
     </Sheet>
   );
