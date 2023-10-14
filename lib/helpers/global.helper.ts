@@ -65,3 +65,17 @@ export const getRelativeTime = (timestamp: number) => {
     return `${Math.floor(diff / units.year)} years`;
   }
 };
+
+export const copyToClipboard = async (text?: string): Promise<void> => {
+  try {
+    if (text) {
+      return navigator.clipboard.writeText(text);
+    }
+  } catch (error) {
+    throw new Error("Error while copying address");
+  }
+};
+
+export const toMilli = (num: number) => {
+  return num * 1000;
+};

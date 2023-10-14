@@ -18,3 +18,9 @@ export type SubscriptionPlan = {
   stripePriceId: number;
   price: number;
 };
+
+export type KeyToken = {
+  appName: string;
+  apiKeyToken: string;
+  dateCreated: number;
+};
