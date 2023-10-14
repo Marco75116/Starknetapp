@@ -1,24 +1,15 @@
 import HeaderPage from "@/components/componentsPages/HeaderPage";
-import AutoForm, { AutoFormSubmit } from "@/components/ui/auto-form";
+import AccountForm from "@/components/form-account";
 
 import React from "react";
-
-import z from "zod";
-
-const formSchema = z.object({});
-const AccountForm = () => {
-  return (
-    <AutoForm formSchema={formSchema}>
-      <AutoFormSubmit> send now</AutoFormSubmit>
-    </AutoForm>
-  );
-};
 
 const AccountPage = () => {
   return (
     <div>
-      <HeaderPage title="Account" desc="Manage your account settings.ssss" />
-      <AccountForm />
+      <HeaderPage title="Account" desc="Manage your account informations." />
+      <div className="lg:w-[50%]">
+        <AccountForm />
+      </div>
     </div>
   );
 };
