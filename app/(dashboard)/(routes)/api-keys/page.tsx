@@ -83,35 +83,32 @@ const ApiKeysPage = () => {
                         <TableCell>
                           <div className="flex flex-row items-center gap-2">
                             <span>{keyInfos.apiKeyToken}</span>
-                            <TooltipProvider>
-                              <Tooltip>
-                                <TooltipTrigger>
-                                  <Copy
-                                    className="cursor-pointer hover:text-uncx-grad-green-a"
-                                    onClick={() => {
-                                      copyToClipboard(keyInfos.apiKeyToken)
-                                        .then(() => {
-                                          toast({
-                                            variant: "success",
-                                            description:
-                                              "Wallet address copied.",
-                                          });
-                                        })
-                                        .catch(() => {
-                                          toast({
-                                            variant: "destructive",
-                                            description:
-                                              "Error while copying address.",
-                                          });
+                            <Tooltip>
+                              <TooltipTrigger>
+                                <Copy
+                                  className="cursor-pointer hover:text-uncx-grad-green-a"
+                                  onClick={() => {
+                                    copyToClipboard(keyInfos.apiKeyToken)
+                                      .then(() => {
+                                        toast({
+                                          variant: "success",
+                                          description: "Wallet address copied.",
                                         });
-                                    }}
-                                  />
-                                </TooltipTrigger>
-                                <TooltipContent>
-                                  <p>Copy Api Key</p>
-                                </TooltipContent>
-                              </Tooltip>
-                            </TooltipProvider>
+                                      })
+                                      .catch(() => {
+                                        toast({
+                                          variant: "destructive",
+                                          description:
+                                            "Error while copying address.",
+                                        });
+                                      });
+                                  }}
+                                />
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                <p>Copy Api Key</p>
+                              </TooltipContent>
+                            </Tooltip>
                           </div>
                         </TableCell>
                         <TableCell>{dateCreatedCell}</TableCell>

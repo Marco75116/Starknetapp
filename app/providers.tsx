@@ -11,6 +11,7 @@ import {
   useInjectedConnectors,
   voyager,
 } from "@starknet-react/core";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export function StarknetProvider({ children }: { children: ReactNode }) {
   const { connectors } = useInjectedConnectors({
@@ -26,7 +27,7 @@ export function StarknetProvider({ children }: { children: ReactNode }) {
       connectors={connectors}
       explorer={voyager}
     >
-      {children}
+      <TooltipProvider>{children}</TooltipProvider>
     </StarknetConfig>
   );
 }
