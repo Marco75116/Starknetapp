@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { HelpCircle } from "lucide-react";
 import { dashboardConfig } from "@/lib/configs/global.config";
 import Image from "next/image";
-import UncxLogo from "@/assets/logos/uncx/uncx-logo.svg";
+import UncxLogo from "@/assets/logos/starknetminter/starknetMinterlogoResize.svg";
 import useSheetState from "@/lib/stores/global.store";
 
 type SidebarNavProps = {
@@ -28,9 +28,9 @@ const SidebarNav = ({ className, ...props }: SidebarNavProps) => {
         <Image
           src={UncxLogo}
           alt="UNCX Logo"
-          className="flex self-center pt-5 pb-8 grayscale-1"
-          width={180}
-          height={180}
+          className="flex self-center pb-2 grayscale-1"
+          width={140}
+          height={100}
         />
         {items.map((item, index) => {
           const Icon = item.icon || HelpCircle;

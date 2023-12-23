@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import React from "react";
 
@@ -9,12 +8,8 @@ const LendingPage = () => {
       Landing page (unprotected)
       <div>
         <Link href="/sign-in">
-          <Button>Sign-In</Button>
+          <Button>Connect Wallet</Button>
         </Link>
-        <Link href="/sign-up">
-          <Button>Sign-Up</Button>
-        </Link>
-        <UserButton afterSignOutUrl="/" />
         <Link href="overview">
           <Button>Go to APP</Button>
         </Link>
