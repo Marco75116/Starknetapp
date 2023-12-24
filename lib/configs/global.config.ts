@@ -1,4 +1,12 @@
-import { KeyRound, Receipt, Settings, User2, User2Icon } from "lucide-react";
+import {
+  KeyRound,
+  Receipt,
+  Settings,
+  Lock,
+  Coins,
+  User2Icon,
+  PiggyBank,
+} from "lucide-react";
 import { NavItem, SubscriptionPlan } from "../types/global.type";
 
 export const dashboardConfig: NavItem[] = [
@@ -8,25 +16,35 @@ export const dashboardConfig: NavItem[] = [
     icon: User2Icon,
   },
   {
-    title: "Account",
-    href: "/account",
-    icon: User2Icon,
+    title: "Coins",
+    href: "/coins",
+    icon: Coins,
   },
   {
-    title: "Api Keys",
-    href: "/api-keys",
-    icon: KeyRound,
+    title: "Locker",
+    href: "/locker",
+    icon: Lock,
   },
   {
-    title: "Billing",
-    href: "/billing",
-    icon: Receipt,
+    title: "Stake",
+    href: "/stake",
+    icon: PiggyBank,
   },
-  {
-    title: "Settings",
-    href: "/settings",
-    icon: Settings,
-  },
+  // {
+  //   title: "Api Keys",
+  //   href: "/api-keys",
+  //   icon: KeyRound,
+  // },
+  // {
+  //   title: "Billing",
+  //   href: "/billing",
+  //   icon: Receipt,
+  // },
+  // {
+  //   title: "Settings",
+  //   href: "/settings",
+  //   icon: Settings,
+  // },
 ];
 
 export const storeSubscriptionPlans: SubscriptionPlan[] = [

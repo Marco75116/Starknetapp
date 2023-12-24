@@ -22,7 +22,7 @@ export function StarknetProvider({ children }: { children: ReactNode }) {
 
   return (
     <StarknetConfig
-      chains={[mainnet]}
+      chains={[goerli]}
       provider={publicProvider()}
       connectors={connectors}
       explorer={voyager}
