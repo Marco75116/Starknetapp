@@ -1,0 +1,75 @@
+[
+  {
+    "type": "impl",
+    "name": "HelloStarknetImpl",
+    "interface_name": "starknet_forge_template::IHelloStarknet"
+  },
+  {
+    "type": "interface",
+    "name": "starknet_forge_template::IHelloStarknet",
+    "items": [
+      {
+        "type": "function",
+        "name": "increase_balance",
+        "inputs": [{ "name": "amount", "type": "core::felt252" }],
+        "outputs": [],
+        "state_mutability": "external"
+      },
+      {
+        "type": "function",
+        "name": "get_balance",
+        "inputs": [],
+        "outputs": [{ "type": "core::felt252" }],
+        "state_mutability": "view"
+      },
+      {
+        "type": "function",
+        "name": "deploy_contract",
+        "inputs": [
+          {
+            "name": "contract_code",
+            "type": "core::starknet::class_hash::ClassHash"
+          },
+          {
+            "name": "constructor",
+            "type": "core::array::Array::<core::felt252>"
+          }
+        ],
+        "outputs": [
+          { "type": "core::starknet::contract_address::ContractAddress" }
+        ],
+        "state_mutability": "external"
+      }
+    ]
+  },
+  { "type": "constructor", "name": "constructor", "inputs": [] },
+  {
+    "type": "event",
+    "name": "starknet_forge_template::HelloStarknet::TokenDeployed",
+    "kind": "struct",
+    "members": [
+      {
+        "name": "erc20",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      },
+      {
+        "name": "owner",
+        "type": "core::starknet::contract_address::ContractAddress",
+        "kind": "data"
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "starknet_forge_template::HelloStarknet::Event",
+    "kind": "enum",
+    "variants": [
+      {
+        "name": "TokenDeployed",
+        "type": "starknet_forge_template::HelloStarknet::TokenDeployed",
+        "kind": "nested"
+      }
+    ]
+  }
+]

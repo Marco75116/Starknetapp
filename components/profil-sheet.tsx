@@ -13,7 +13,7 @@ import {
 import { useAccount, useBalance, useDisconnect } from "@starknet-react/core";
 import { ArrowUpRight, Copy, Wallet2 } from "lucide-react";
 import { useToast } from "./ui/use-toast";
-import { copyToClipboard } from "@/lib/helpers/global.helper";
+import { copyToClipboard, formatNumber } from "@/lib/helpers/global.helper";
 import Link from "next/link";
 import { Label } from "./ui/label";
 
@@ -63,7 +63,7 @@ export function ProfilSheet() {
                 }}
               />
               <Link
-                href={`https://testnet.starkscan.co/`}
+                href={`https://testnet.starkscan.co/contract/${address}`}
                 target="_blank"
                 className="cursor-pointer hover:opacity-70"
               >
@@ -73,7 +73,7 @@ export function ProfilSheet() {
           </div>
 
           <div className="grid justify-center">
-            {data?.formatted} {data?.symbol}
+            {formatNumber(Number(data?.formatted), 3)} {data?.symbol}
           </div>
 
           <div className="grid items-center justify-center grid-cols-3 mt-3 ">
