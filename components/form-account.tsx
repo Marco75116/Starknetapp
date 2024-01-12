@@ -6,9 +6,13 @@ import {
   useAccount,
   useContract,
   useContractWrite,
-  useNetwork,
+  useWaitForTransaction,
 } from "@starknet-react/core";
 import { useEffect, useMemo, useState } from "react";
+import useProcessTxState from "@/lib/stores/trasaction.store";
+import { useToast } from "./ui/use-toast";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 const formSchema = z.object({
   Name: z
@@ -37,8 +41,9 @@ const formSchema = z.object({
 });
 
 const AccountForm = () => {
+  const { toast } = useToast();
+  const { setIsLoading, setIsPending } = useProcessTxState();
   const { address } = useAccount();
-  const { chain } = useNetwork();
   const { contract } = useContract({
     address:
       "0x061a4c53f11e29716e4c0bb28192fa03b74346a3cfdf08fcef43148b92679887",
@@ -55,8 +60,21 @@ const AccountForm = () => {
     );
   }, [contract, address, constructor]);
 
-  const { writeAsync, data, isPending } = useContractWrite({
+  const { writeAsync, data, isPending, isError } = useContractWrite({
     calls,
+  });
+
+  const {
+    data: receipt,
+    isLoading,
+    isError: isFailTx,
+    isSuccess,
+    error,
+  } = useWaitForTransaction({
+    hash: data?.transaction_hash,
+    watch: true,
+    retry: true,
+    refetchInterval: 2000,
   });
 
   useEffect(() => {
@@ -64,6 +82,51 @@ const AccountForm = () => {
       writeAsync();
     }
   }, [constructor]);
+
+  useEffect(() => {
+    setIsLoading(isLoading);
+    setIsPending(isPending);
+  }, [isLoading, isPending]);
+
+  useEffect(() => {
+    if (isSuccess) {
+      toast({
+        variant: "success",
+        description: (
+          <div className="flex flex-row items-center justify-center">
+            Transaction completed successfully. &nbsp;
+            <Link
+              href={`https://testnet.starkscan.co/tx/${data?.transaction_hash}`}
+              target="_blank"
+              className="flex flex-row items-center justify-center underline"
+            >
+              View Tx <ArrowUpRight />
+            </Link>
+          </div>
+        ),
+      });
+    }
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isFailTx) {
+      toast({
+        variant: "destructive",
+        description: (
+          <div className="flex flex-row items-center justify-center">
+            Transaction failed. &nbsp;
+            <Link
+              href={`https://testnet.starkscan.co/tx/${data?.transaction_hash}`}
+              target="_blank"
+              className="flex flex-row items-center justify-center underline"
+            >
+              View Tx <ArrowUpRight />
+            </Link>
+          </div>
+        ),
+      });
+    }
+  }, [isFailTx]);
 
   return (
     <AutoForm
