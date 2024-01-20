@@ -6,16 +6,18 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Plus } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+
 import React from "react";
+import TableCoins from "./tableCoins/TableCoins";
 
 const CoinPage = () => {
   return (
     <div>
       <HeaderPage title="Coin" desc="Configure & Launch your cryptocurrency." />
-      <div className="lg:w-[50%]">
+      <div className="lg:w-[50%] mb-6">
         <Card>
           <CardContent className="pb-0">
             <Accordion type="single" collapsible>
@@ -32,7 +34,10 @@ const CoinPage = () => {
             </Accordion>
           </CardContent>
         </Card>
+
         <Separator className="my-2" />
+
+        <TableCoins />
       </div>
     </div>
   );

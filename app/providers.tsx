@@ -12,6 +12,7 @@ import {
   voyager,
 } from "@starknet-react/core";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export function StarknetProvider({ children }: { children: ReactNode }) {
   const { connectors } = useInjectedConnectors({
@@ -20,14 +21,17 @@ export function StarknetProvider({ children }: { children: ReactNode }) {
     order: "random",
   });
 
+  const queryClient = new QueryClient();
   return (
-    <StarknetConfig
-      chains={[goerli]}
-      provider={publicProvider()}
-      connectors={connectors}
-      explorer={voyager}
-    >
-      <TooltipProvider>{children}</TooltipProvider>
-    </StarknetConfig>
+    <QueryClientProvider client={queryClient}>
+      <StarknetConfig
+        chains={[goerli]}
+        provider={publicProvider()}
+        connectors={connectors}
+        explorer={voyager}
+      >
+        <TooltipProvider>{children}</TooltipProvider>
+      </StarknetConfig>
+    </QueryClientProvider>
   );
 }

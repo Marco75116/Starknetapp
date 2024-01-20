@@ -1,3 +1,5 @@
+import { Pagination, Token } from "../types/global.type";
+
 export const toFormattedPercentage = (
   num: number | undefined,
   decimals: number | undefined
@@ -78,4 +80,22 @@ export const copyToClipboard = async (text?: string): Promise<void> => {
 
 export const toMilli = (num: number) => {
   return num * 1000;
+};
+
+export const addLeadingZero = (hexValue: string | undefined) => {
+  if (hexValue === undefined) return hexValue;
+  return "0x0" + hexValue.slice(2);
+};
+
+export const filterPagination = (index: number, pagination: Pagination) => {
+  return (
+    index >= pagination.page && index <= pagination.page + pagination.range - 1
+  );
+};
+
+export const sortTokens = (a: Token, b: Token) => {
+  const aTimestamp = Date.parse(a.timestamp);
+  const bTimestamp = Date.parse(b.timestamp);
+
+  return bTimestamp - aTimestamp;
 };

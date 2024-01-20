@@ -24,3 +24,17 @@ export type KeyToken = {
   apiKeyToken: string;
   dateCreated: number;
 };
+
+export type Token = {
+  tokenaddress: string;
+  owner: string;
+  name: string;
+  blocknumber: number;
+  timestamp: string;
+  _cursor: number;
+};
+
+export type Pagination = {
+  range: number;
+  page: number;
+};
